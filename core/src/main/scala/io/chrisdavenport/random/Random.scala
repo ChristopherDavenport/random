@@ -149,6 +149,22 @@ object Random {
     new ScalaRandom[F](sRandom.pure[F]){}
   }
 
+  def javaUtilConcurrentThreadLocalRandom[F[_]: Sync]: Random[F] = 
+    new ScalaRandom[F](Sync[F].delay(new SRandom(java.util.concurrent.ThreadLocalRandom.current()))){}
+
+
+  def javaSecuritySecureRandom[F[_]: Sync](n: Int): F[Random[F]] = for {
+      ref <- Ref[F].of(0)
+      array <- Sync[F].delay(Array.fill(n)(new SRandom(new java.security.SecureRandom)))
+    } yield {
+      def incrGet = ref.modify(i => (if (i < i) i else 0, i))
+      def selectRandom = incrGet.map(array(_))
+      new ScalaRandom[F](selectRandom) {}
+    }
+
+  def javaSecuritySecureRandom[F[_]: Sync]: F[Random[F]] = 
+    Sync[F].delay(new java.security.SecureRandom).flatMap(r => javaUtilRandom(r))
+
 
   private abstract class ScalaRandom[F[_]: Sync](f: F[SRandom]) extends Random[F]{
 
