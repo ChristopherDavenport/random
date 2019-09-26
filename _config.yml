@@ -1,11 +1,11 @@
 name: random
 baseurl: /random
-description: Random Generation for Scala
+description: Pure Randomness in Scala
 highlighter: rouge
 docs: true
 collections:
   tut:
     output: true
-version: 0.0.1+1-fa3a4d6f-SNAPSHOT
+version: 0.0.1+2-0c88edc9-SNAPSHOT
 org: io.chrisdavenport
 markdown: kramdown
