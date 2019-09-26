@@ -7,8 +7,6 @@ import scala.util.{Random => SRandom}
 
 trait Random[F[_]] {
 
-  def alphanumeric: F[scala.collection.immutable.LazyList[Char]]
-
   def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double]
 
   def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int]
@@ -75,11 +73,6 @@ object Random {
   }
 
   private abstract class ScalaRandom[F[_]: Sync](f: F[SRandom]) extends Random[F]{
-
-    def alphanumeric: F[scala.collection.immutable.LazyList[Char]] = for {
-      r <- f
-      out <- Sync[F].delay(r.alphanumeric)
-    } yield out
 
     def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long] = for {
       r <- f
