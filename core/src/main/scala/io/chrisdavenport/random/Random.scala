@@ -46,6 +46,7 @@ trait Random[F[_]] {
 
 object Random {
 
+  def apply[F[_]](implicit ev: Random[F]): Random[F] = ev
 
   def nScalaUtilRandom[F[_]: Sync](n: Int): F[Random[F]] = for {
     ref <- Ref[F].of(0)
