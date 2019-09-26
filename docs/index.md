@@ -3,7 +3,7 @@ layout: home
 
 ---
 
-# random - Random Generation for Scala [![Build Status](https://travis-ci.com/ChristopherDavenport/random.svg?branch=master)](https://travis-ci.com/ChristopherDavenport/random) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12)
+# random - Pure Randomness in Scala [![Build Status](https://travis-ci.com/ChristopherDavenport/random.svg?branch=master)](https://travis-ci.com/ChristopherDavenport/random) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12)
 
 ## Quick Start
 

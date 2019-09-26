@@ -32,7 +32,7 @@ lazy val site = project.in(file("site"))
     import microsites._
     Seq(
       micrositeName := "random",
-      micrositeDescription := "Random Generation for Scala",
+      micrositeDescription := "Pure Randomness in Scala",
       micrositeAuthor := "Christopher Davenport",
       micrositeGithubOwner := "ChristopherDavenport",
       micrositeGithubRepo := "random",

@@ -1,4 +1,4 @@
-# random - Random Generation for Scala [![Build Status](https://travis-ci.com/ChristopherDavenport/random.svg?branch=master)](https://travis-ci.com/ChristopherDavenport/random) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12) ![Code of Consuct](https://img.shields.io/badge/Code%20of%20Conduct-Scala-blue.svg)
+# random - Pure Randomness in Scala [![Build Status](https://travis-ci.com/ChristopherDavenport/random.svg?branch=master)](https://travis-ci.com/ChristopherDavenport/random) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/random_2.12) ![Code of Consuct](https://img.shields.io/badge/Code%20of%20Conduct-Scala-blue.svg)
 
 ## [Head on over to the microsite](https://ChristopherDavenport.github.io/random)
 
