@@ -8,13 +8,32 @@ import scala.util.{Random => SRandom}
 
 trait Random[F[_]] {
 
+  /**
+   * Returns the next pseudorandom, uniformly distributed double value between min (inclusive) and max (exclusive) from this random number generator's sequence.
+   **/
   def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double]
 
-  def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int]
-
+  /**
+   * Returns the next pseudorandom, uniformly distributed float value between min (inclusive) and max (exclusive) from this random number generator's sequence.
+   **/
   def betweenFloat(minInclusive: Float, maxExclusive: Float): F[Float]
 
+  /**
+   * Returns a pseudorandom, uniformly distributed int value between min (inclusive) and the specified value max (exclusive),
+   * drawn from this random number generator's sequence.
+   **/
+  def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int]
+
+  /**
+   * Returns a pseudorandom, uniformly distributed long value between min (inclusive) and the specified value max (exclusive), 
+   * drawn from this random number generator's sequence.
+   **/
   def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long]
+
+  /**
+   * Returns a pseudorandomly chosen alphanumeric character, equally chosen from A-Z, a-z, and 0-9.
+   **/
+  def nextAlphaNumeric: F[Char]
 
   /**
    * Returns the next pseudorandom, uniformly distributed boolean value from this random number generator's sequence.
@@ -230,6 +249,11 @@ object Random {
         if (next < maxExclusive) next
         else Math.nextAfter(maxExclusive, Double.NegativeInfinity)
       }
+    }
+
+    def nextAlphaNumeric: F[Char] = {
+      val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+      nextIntBounded(chars.length()).map(chars.charAt(_))
     }
 
     def nextBoolean: F[Boolean] = for {
