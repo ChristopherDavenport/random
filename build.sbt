@@ -9,7 +9,6 @@ val kindProjectorV = "0.10.3"
 val betterMonadicForV = "0.3.1"
 
 
-
 // Projects
 lazy val `random` = project.in(file("."))
   .disablePlugins(MimaPlugin)

@@ -7,17 +7,17 @@ import scala.util.{Random => SRandom}
 
 trait Random[F[_]] {
 
-  def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double]
+  // def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double]
 
-  def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int]
+  // def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int]
 
-  def betweenFloat(minInclusive: Float, maxExclusive: Float): F[Float]
+  // def betweenFloat(minInclusive: Float, maxExclusive: Float): F[Float]
 
-  def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long]
+  // def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long]
 
   def nextBoolean: F[Boolean]
 
-  def nextBytes(n: Int): F[Array[Byte]]
+  // def nextBytes(n: Int): F[Array[Byte]]
 
   def nextDouble: F[Double]
 
@@ -27,11 +27,11 @@ trait Random[F[_]] {
 
   def nextInt: F[Int]
 
-  def nextIntBounded(n: Int): F[Int] = betweenInt(0, n)
+  // def nextIntBounded(n: Int): F[Int] = betweenInt(0, n)
 
   def nextLong: F[Long]
 
-  def nextLongBounded(n: Long): F[Long] = betweenLong(0L, n)
+  // def nextLongBounded(n: Long): F[Long] = betweenLong(0L, n)
 
   def nextPrintableChar: F[Char]
 
@@ -75,35 +75,35 @@ object Random {
 
   private abstract class ScalaRandom[F[_]: Sync](f: F[SRandom]) extends Random[F]{
 
-    def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long] = for {
-      r <- f
-      out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
-    } yield out
+    // def betweenLong(minInclusive: Long, maxExclusive: Long): F[Long] = for {
+    //   r <- f
+    //   out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
+    // } yield out
 
-    def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int] = for {
-      r <- f
-      out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
-    } yield out
+    // def betweenInt(minInclusive: Int, maxExclusive: Int): F[Int] = for {
+    //   r <- f
+    //   out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
+    // } yield out
 
-    def betweenFloat(minInclusive: Float, maxExclusive: Float): F[Float] = for {
-      r <- f
-      out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
-    } yield out
+    // def betweenFloat(minInclusive: Float, maxExclusive: Float): F[Float] = for {
+    //   r <- f
+    //   out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
+    // } yield out
 
-    def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double] = for {
-      r <- f
-      out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
-    } yield out
+    // def betweenDouble(minInclusive: Double, maxExclusive: Double): F[Double] = for {
+    //   r <- f
+    //   out <- Sync[F].delay(r.between(minInclusive, maxExclusive))
+    // } yield out
 
     def nextBoolean: F[Boolean] = for {
       r <- f
       out <- Sync[F].delay(r.nextBoolean())
     } yield out
 
-    def nextBytes(n: Int): F[Array[Byte]] = for {
-      r <- f
-      out <- Sync[F].delay(r.nextBytes(n))
-    } yield out
+    // def nextBytes(n: Int): F[Array[Byte]] = for {
+    //   r <- f
+    //   out <- Sync[F].delay(r.nextBytes(n))
+    // } yield out
 
     def nextDouble: F[Double] = for {
       r <- f
