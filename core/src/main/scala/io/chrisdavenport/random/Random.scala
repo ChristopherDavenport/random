@@ -17,7 +17,7 @@ trait Random[F[_]] {
 
   def nextBoolean: F[Boolean]
 
-  // def nextBytes(n: Int): F[Array[Byte]]
+  def nextBytes(n: Int): F[Array[Byte]]
 
   def nextDouble: F[Double]
 
@@ -100,10 +100,11 @@ object Random {
       out <- Sync[F].delay(r.nextBoolean())
     } yield out
 
-    // def nextBytes(n: Int): F[Array[Byte]] = for {
-    //   r <- f
-    //   out <- Sync[F].delay(r.nextBytes(n))
-    // } yield out
+    def nextBytes(n: Int): F[Array[Byte]] = for {
+      r <- f
+      bytes = new Array[Byte](0 max n)
+      _ <- Sync[F].delay(r.nextBytes(bytes))
+    } yield bytes
 
     def nextDouble: F[Double] = for {
       r <- f
